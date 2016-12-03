@@ -8,16 +8,16 @@ https://ci.apache.org/projects/flink/flink-docs-master/api/java/org/apache/flink
 ## Testes de desempenho
 ### Para alterar o número de nós que o flink vai rodar no cluster
 Editar arquivo  ~/.flink_build/build-target/conf/slaves comentando os nós que nao se quer utilizar com #
-Ex: utilizar somente nós 01, 02, 03 e 04
-node01
-node02
-node03
-node04
-#node05
-#node06
-#node07
-...
-#node18
+Ex: utilizar somente nós 01, 02, 03 e 04\n
+- node01
+- node02
+- node03
+- node04
+- #node05
+- #node06
+- #node07
+- ...
+- #node18
 ### Iniciar e para cluster
 Ao se iniciar o cluster com o comando start-cluster.sh, não pode ocorrer esse tipo de mensagem:
 [INFO] 2 instance(s) of taskmanager are already running on node03
