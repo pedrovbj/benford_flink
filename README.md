@@ -22,14 +22,8 @@ Ex: utilizar somente nós 01, 02, 03 e 04
 ### Iniciar e para cluster
 Ao se iniciar o cluster com o comando start-cluster.sh, não pode ocorrer esse tipo de mensagem:
 [INFO] 2 instance(s) of taskmanager are already running on node03
-Caso isso ocorra, para cada nó que ocorrer tem-se que parar os taskmanagers para nao afetarem os testes, isso eh feito assim:
-- Primeiro no frontend:
-- stop-cluster.sh
-- Depois nos demais nós em q apareceu a mensagem
-- ssh node03
-- taskmanager.sh stop
-- taskmanager.sh stop
-- Tem q se rodar o comando taskmanager.sh stop uma vez para cada instancia de taskmanager e entao no caso, sao duas vezes.
+Caso isso ocorra, rodar
+- flink-daemon.sh stop-all taskmanager
 
 ## Demais duvidas
 https://www.facebook.com/vrglh
