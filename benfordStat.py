@@ -52,14 +52,23 @@ def analyse(outputFolder):
     freqExp=map(lambda x: int(round(x*sum(freqObs))), probExp)
     print freqExp
     print goodnessOfFit(freqObs, freqExp)
-    plt.plot(keys, freqObs, label="Observed frequencies")
-    plt.plot(keys, freqExp, label="Expected frequencies")
-    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=2,
-       ncol=2, mode="expand", borderaxespad=0.)
-    plt.ylabel("Frequencies")
-    plt.xlabel("Digit")
-    plt.title(outputFolder)
-    plt.show()
+
+    with open("stat_results.txt", "a") as f:
+        f.write(outputFolder+":\n")
+        f.write(str(freqObs)+"\n")
+        f.write(str(freqExp)+"\n")
+        f.write(str(goodnessOfFit(freqObs, freqExp))+"\n")
+        f.write("\n")
+
+    ### Uncomment for plotting
+    # plt.plot(keys, freqObs, label="Observed frequencies")
+    # plt.plot(keys, freqExp, label="Expected frequencies")
+    # plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=2,
+    #    ncol=2, mode="expand", borderaxespad=0.)
+    # plt.ylabel("Frequencies")
+    # plt.xlabel("Digit")
+    # plt.title(outputFolder)
+    # plt.show()
 
 def main(argv):
     outputFolder=sys.argv[1]
