@@ -2,6 +2,7 @@ import csv
 import sys, getopt
 from os import system
 from math import log, log10, pow
+from matplotlib import pyplot as plt
 from scipy.stats import chisquare, chi2
 
 
@@ -40,19 +41,29 @@ def goodnessOfFit(freqObs, freqExp, confLevel=0.05):
 def mergeResults(outputFolder):
     system("cat " + outputFolder + "/* | sort > " + outputFolder + "/merge")
 
-def main(argv):
-    outputFolder=sys.argv[1]
+def analyse(outputFolder):
     mergeResults(outputFolder)
     freqObsDict = freqFromResults(outputFolder+"/merge")
     keys = freqObsDict.keys()
     keys.sort()
     freqObs = [freqObsDict[key] for key in keys]
-    print freqObs, sum(freqObs)
+    print freqObs
     probExp=map(benfordProb, keys)
     freqExp=map(lambda x: int(round(x*sum(freqObs))), probExp)
-    print freqExp, sum(freqExp)
+    print freqExp
     print goodnessOfFit(freqObs, freqExp)
+    plt.plot(keys, freqObs, label="Observed frequencies")
+    plt.plot(keys, freqExp, label="Expected frequencies")
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=2,
+       ncol=2, mode="expand", borderaxespad=0.)
+    plt.ylabel("Frequencies")
+    plt.xlabel("Digit")
+    plt.title(outputFolder)
+    plt.show()
 
+def main(argv):
+    outputFolder=sys.argv[1]
+    analyse(outputFolder)
 
 if __name__ == '__main__':
     main(sys.argv[1:])

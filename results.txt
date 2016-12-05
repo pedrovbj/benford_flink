@@ -1,0 +1,16 @@
+results/2012_resultados/despesas_candidatos
+results/2012_resultados/despesas_comites
+results/2012_resultados/despesas_partidos
+results/2012_resultados/receitas_candidatos
+results/2012_resultados/receitas_comites
+results/2012_resultados/receitas_partidos
+results/2014_resultados/despesa_candidatos
+results/2014_resultados/despesa_comite
+results/2014_resultados/despesa_partido
+results/2014_resultados/receita_candidatos
+results/2014_resultados/receita_comite
+results/2014_resultados/receita_partido
+results/2016_resultados/despesas_candidatos
+results/2016_resultados/despesas_partidos
+results/2016_resultados/receitas_canddidatos
+results/2016_resultados/receitas_partidos
