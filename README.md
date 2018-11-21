@@ -1,33 +1,8 @@
-## Para compilar o código
+# Benford Law using Flink Framework
+This project uses [Benford's law](https://en.wikipedia.org/wiki/Benford%27s_law "Benford's law - Wikipedia") to analyse the [accountability](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais "Repositorio de dados eleitorais") of candidates at the Brazilian 2012, 2014 and 2016 elections.
+
+### Compiling
 mvn clean package
-## Para rodar o código
-mvn exec:java -Dexec.mainClass=org.apache.flink.Benford -Dexec.args="file:///home/grupo11sd/caminho/para/arquivo 0000000000000000001 -n=2 -d=; -o=file:///home/grupo11sd/results"
-ps: sao tres barras mesmo em "file:///"
-## Sobre o argumento fieldMask
-https://ci.apache.org/projects/flink/flink-docs-master/api/java/org/apache/flink/api/java/io/CsvReader.html#includeFields-java.lang.String-
-## Testes de desempenho
-### Para alterar o número de nós que o flink vai rodar no cluster
-Editar arquivo  ~/.flink_build/build-target/conf/slaves comentando os nós que nao se quer utilizar com #
-Ex: utilizar somente nós 01, 02, 03 e 04
-- node01
-- node02
-- node03
-- node04
-- #node05
-- #node06
-- #node07
-- ...
-- #node18
 
-### Iniciar e para cluster
-Ao se iniciar o cluster com o comando start-cluster.sh, não pode ocorrer esse tipo de mensagem:
-[INFO] 2 instance(s) of taskmanager are already running on node03
-Caso isso ocorra, primeiro esperar o start-cluster.sh finalizar, e rodar no frontend:
-- stop-cluster.sh
-Entao, para cada nó XX em q a mensagem ocorrer rodar:
-- ssh nodeXX
-- flink-daemon.sh stop-all taskmanager
-E entao iniciar o cluster novamente com start-cluster.sh
-
-## Demais duvidas
-https://www.facebook.com/vrglh
+### Running
+mvn exec:java -Dexec.mainClass=org.apache.flink.Benford -Dexec.args="file:///home/user/path/to/file 0000000000000000001 -n=2 -d=; -o=file:///home/user/path/to/results"
